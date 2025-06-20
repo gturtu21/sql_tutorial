@@ -1,0 +1,35 @@
+!sudo apt update
+!sudo apt install postgresql postgresql-contrib -y
+
+
+sudo service postgresql start
+
+check the status
+!sudo service postgresql status
+
+!sudo -i -u postgres
+!psql
+
+The prompt should look like this:
+postgres=# 
+
+
+
+CREATE DATABASE mytestdb;
+CREATE USER mytestuser WITH ENCRYPTED PASSWORD 'mypassword';
+GRANT ALL PRIVILEGES ON DATABASE mytestdb TO mytestuser;
+
+
+sudo nano /etc/postgresql/*/main/postgresql.conf
+
+
+LOOK FOT THIS LINE AND MAKE IT TOOK LIKE THIS 
+listen_addresses = '*'
+
+sudo nano /etc/postgresql/*/main/pg_hba.conf
+
+ADD THIS LINE AT THE BOTTOM
+host    all             all             0.0.0.0/0               md5
+
+sudo service postgresql restart
+
