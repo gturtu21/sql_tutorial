@@ -1,35 +1,38 @@
 !sudo apt update
 !sudo apt install postgresql postgresql-contrib -y
 
+!sudo service postgresql start
 
-sudo service postgresql start
-
-check the status
+Check the daemon status
 !sudo service postgresql status
 
+Switch to postgres user and open the psql shell
 !sudo -i -u postgres
 !psql
 
-The prompt should look like this:
+After the previous command, the prompt should look like this:
 postgres=# 
-
 
 
 CREATE DATABASE mytestdb;
 CREATE USER mytestuser WITH ENCRYPTED PASSWORD 'mypassword';
 GRANT ALL PRIVILEGES ON DATABASE mytestdb TO mytestuser;
 
+The previous command is needed to give the user privileges to create tables etc
 
-sudo nano /etc/postgresql/*/main/postgresql.conf
 
+Edit this file to allow access to database from other IPs:
+!sudo nano /etc/postgresql/*/main/postgresql.conf
 
-LOOK FOT THIS LINE AND MAKE IT TOOK LIKE THIS 
+Look for this line and make it look like this (normally you should find localhost instead *)
 listen_addresses = '*'
 
-sudo nano /etc/postgresql/*/main/pg_hba.conf
+!sudo nano /etc/postgresql/*/main/pg_hba.conf
 
-ADD THIS LINE AT THE BOTTOM
+Add this line at the bottom
 host    all             all             0.0.0.0/0               md5
 
-sudo service postgresql restart
+!sudo service postgresql restart
+
+After this procedure you should be aple to configure your psql connection from VSCode
 
