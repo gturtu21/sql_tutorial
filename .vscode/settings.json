@@ -1,0 +1,22 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "172.24.123.157",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "mytestconnection",
+            "database": "mytestsql",
+            "username": "postgres"
+        },
+        {
+            "previewLimit": 50,
+            "server": "172.24.123.157",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "newconn",
+            "database": "mytestdb",
+            "username": "mytestuser"
+        }
+    ]
+}

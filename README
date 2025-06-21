@@ -36,3 +36,15 @@ host    all             all             0.0.0.0/0               md5
 
 After this procedure you should be aple to configure your psql connection from VSCode
 
+
+For a full real-case project, you might want:
+
+More tables (e.g., projects, performance_reviews, salaries_over_time)
+
+Real data volume simulation (1000s of rows, not 5)
+
+ETL scripts or Python code to connect to the database
+
+Schema evolution: migrations, altering tables, version control
+
+Business questions that simulate reporting needs
