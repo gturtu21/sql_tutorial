@@ -48,3 +48,13 @@ ETL scripts or Python code to connect to the database
 Schema evolution: migrations, altering tables, version control
 
 Business questions that simulate reporting needs
+
+
+######
+sudo -i -u postgres
+createdb ecommerce_db
+psql ecommerce_db
+
+CREATE ROLE gturtu21 WITH LOGIN PASSWORD 'yourpasswordblablabla';
+
+psql -U gturtu2 -d ecommerce_db -f setup.sql
