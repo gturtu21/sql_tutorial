@@ -57,4 +57,8 @@ psql ecommerce_db
 
 CREATE ROLE gturtu21 WITH LOGIN PASSWORD 'yourpasswordblablabla';
 
+Create database from the file setup.sql 
+
 psql -U gturtu2 -d ecommerce_db -f setup.sql
+
+
