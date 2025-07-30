@@ -1,3 +1,11 @@
+| Role           | Tool               | SQL used for                             |
+| -------------- | ------------------ | ---------------------------------------- |
+| Analyst        | Metabase, Tableau  | Answering business questions             |
+| Data Engineer  | dbt, Airflow, Bash | Cleaning & transforming data (ETL)       |
+| Developer      | Flask, FastAPI     | Powering app features (e.g. orders view) |
+| Data Scientist | Jupyter, Pandas    | Extracting training data for ML          |
+
+
 !sudo apt update
 !sudo apt install postgresql postgresql-contrib -y
 
@@ -60,5 +68,7 @@ CREATE ROLE gturtu21 WITH LOGIN PASSWORD 'yourpasswordblablabla';
 Create database from the file setup.sql 
 
 psql -U gturtu2 -d ecommerce_db -f setup.sql
+
+
 
 
