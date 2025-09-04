@@ -1,10 +1,10 @@
 SELECT COUNT(*) FROM customers;
 
 SELECT * FROM customers;
-
-SELECT * FROM orders;
-
 SELECT * FROM order_items;
+SELECT * FROM orders;
+SELECT * FROM payments;
+SELECT * FROM products;
 
 -- Count orders per customer
 SELECT customer_id, COUNT(*) FROM orders
@@ -22,7 +22,8 @@ JOIN products ON order_items.product_id = products.id;
 /* Calculate total revenue per order
 Goal: Sum of (quantity * unit_price) for each order
 Rule of Thumb:
-In the SELECT clause, every column that is not inside an aggregate function
+In the SELECT clause, every column that is not inside
+an aggregate function
 must be listed in the GROUP BY.
 */
 SELECT order_id, SUM(quantity*unit_price) 
@@ -45,6 +46,12 @@ Goal: Rank customers by total money spent across all orders
 SELECT c.id, c.name, 
 SUM(oi.quantity*oi.unit_price) AS total_spent,
 RANK() OVER (ORDER BY SUM(oi.quantity * oi.unit_price) DESC) AS spending_rank
+FROM customers c
+JOIN orders o ON c.id = o.customer_id
+JOIN order_items oi ON o.id = oi.order_id
+GROUP BY c.id, c.name
+ORDER BY spending_rank;
+
 
 /*When in doubt btw JOIN and LEFT JOIN, always ask:
 
