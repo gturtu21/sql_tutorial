@@ -30,4 +30,19 @@ ecommerce-project/
 
 ## ⚡ Setup
 
-blabla
+### Step 1: Create database & tables
+Run the schema setup script:
+
+```bash
+psql -U <your_user> -d <your_db> -f sql/setup.sql
+```
+
+### Step 2: Install Python dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### Step 3: Run analysis
+```bash
+python src/analysis.py
+```
