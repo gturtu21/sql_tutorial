@@ -26,4 +26,8 @@ ecommerce-project/
 │
 ├── requirements.txt     # Python dependencies
 └── README.md            # Project documentation
+```
 
+## ⚡ Setup
+
+blabla
