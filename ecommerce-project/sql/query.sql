@@ -69,3 +69,28 @@ FROM customers c
 JOIN orders o ON c.id = o.customer_id
 JOIN order_items oi ON o.id = oi.order_id
 GROUP BY c.name;
+
+
+/* 5. CTEs: breakdown monthly revenue
+Goal: Monthly revenue totals for the whole store
+Hint: Use Common Table Expressions (CTE) with WITH and group by month
+*/
+WITH monthly_revenue AS (
+    SELECT DATE_TRUNC('month', o.order_date) AS month,
+    SUM(oi.quantity*oi.unit_price) AS revenue
+    FROM orders o
+    JOIN order_items oi ON o.id = oi.order_id
+    GROUP BY month
+)
+SELECT * FROM monthly_revenue;
+
+/*
+6. Subqueries: customers who bought only once
+Goal: Find customers with exactly one order
+Hint: Use subquery to count orders per customer, filter by count = 1
+*/
+
+SELECT customer_id FROM orders
+GROUP BY customer_id
+HAVING COUNT(*) = 1;
+
